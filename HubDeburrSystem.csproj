@@ -225,6 +225,7 @@
     <Compile Include="Models\PathPointModel.cs" />
     <Compile Include="Models\PointModel.cs" />
     <Compile Include="Models\ProductionDatas.cs" />
+    <Compile Include="Models\ProductionRecord.cs" />
     <Compile Include="Models\StatisticsDataModel.cs" />
     <Compile Include="Models\SystemDatas.cs" />
     <Compile Include="Models\TemplateDataListModel.cs" />
