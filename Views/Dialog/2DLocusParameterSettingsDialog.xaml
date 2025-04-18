@@ -1,0 +1,135 @@
+﻿<Window x:Class="HubDeburrSystem.Views.Dialog.LocusParameterSettingsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HubDeburrSystem.Views.Dialog"
+        mc:Ignorable="d"
+        FontFamily="Microsoft YaHei" FontWeight="Medium" FontSize="14" 
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Title="2D轨迹制作参数设置" Height="541" Width="600">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="1"/>
+    </WindowChrome.WindowChrome>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Assets/Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Assets/Styles/TextBoxStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="#88D1D5E8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#FFDDE3FB">
+            <TextBlock Text="2D轨迹制作参数设置" VerticalAlignment="Center" Margin="20,0" FontSize="22" FontWeight="Bold" Foreground="#444"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.6*"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="1.6*"/>
+                <ColumnDefinition Width="0.8*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="1" Grid.Column="0"  Text="内圆卡尺长度：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox  Grid.Row="1"  Grid.Column="1" x:Name="InnerCaliperLength_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                      PreviewTextInput="InnerMaxThreshold_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="外圆最小阈值：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="1" Grid.Column="3" x:Name="OuterMinThreshold_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                     PreviewTextInput="OuterMinThreshold_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            
+            <TextBlock Grid.Row="2"  Text="内圆半径：" VerticalAlignment="Center"  FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox  Grid.Row="2"  Grid.Column="1" x:Name="InnerRadius_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                      PreviewTextInput="InnerMinArea_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            <TextBlock Grid.Row="2" Grid.Column="2"  Text="真实边偏差倍数：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox  Grid.Row="2"  Grid.Column="3" x:Name="CalipersDevExpand_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                      PreviewTextInput="Tbx_PreviewTextInput_Int"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="测量卡尺长度：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Name="CalipersMeaLength_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                      PreviewTextInput="Tbx_PreviewTextInput_Int"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            <TextBlock Grid.Row="3" Grid.Column="2"  Text="测量卡尺宽度：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox  Grid.Row="3"  Grid.Column="3" x:Name="CalipersMeaWidth_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                      PreviewTextInput="Tbx_PreviewTextInput_Int"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="卡尺分割阈值：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Name="CalipersAmpThreshold_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                      PreviewTextInput="Tbx_PreviewTextInput_Int"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            <TextBlock Grid.Row="4" Grid.Column="2"  Text="卡尺平滑参数：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox  Grid.Row="4"  Grid.Column="3" x:Name="CalipersSmooth_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                      PreviewTextInput="Tbx_PreviewTextInput_Int"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+
+            <TextBlock Grid.Row="5"  Text="窗口暗部最小面积：" VerticalAlignment="Center"  FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox  Grid.Row="5"  Grid.Column="1" x:Name="DarkMinArea_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                      PreviewTextInput="DarkMinArea_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            <TextBlock Grid.Row="5" Grid.Column="2" Text="窗口暗部最大阈值：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="5" Grid.Column="3" x:Name="DarkMaxThreshold_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                     PreviewTextInput="DarkMaxThreshold_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            
+            <TextBlock Grid.Row="6" Grid.Column="0"  Text="窗口亮部最小面积：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox  Grid.Row="6"  Grid.Column="1" x:Name="BrightMinArea_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                      PreviewTextInput="BrightMinArea_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            <TextBlock Grid.Row="6" Grid.Column="2" Text="窗口亮部最小阈值：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="6" Grid.Column="3" x:Name="BrightMinThreshold_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                     PreviewTextInput="BrightMinThreshold_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+
+            <TextBlock Grid.Row="7" Grid.Column="0"  Text="模板匹配最小相似度：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="7" Grid.Column="1" x:Name="MinSimilarity_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                     PreviewTextInput="MinSimilarity_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            <TextBlock Grid.Row="7" Grid.Column="2"  Text="新旧轮廓最大距离：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="7" Grid.Column="3" x:Name="MaxDistance_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                     PreviewTextInput="MaxDistance_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+
+            <TextBlock Grid.Row="8" Grid.Column="0" Text="窗口微调轮廓膨胀：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="8" Grid.Column="1" x:Name="SingleXldDilation_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                     PreviewTextInput="SingleXldDilation_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            <TextBlock Grid.Row="8" Grid.Column="2"  Text="亮暗合并膨胀腐蚀值：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="8" Grid.Column="3" x:Name="UnionDilationErosion_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                     PreviewTextInput="UnionDilationErosion_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+
+            <TextBlock Grid.Row="9" Grid.Column="0" Text="边缘算法掩模的宽高：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="9" Grid.Column="1" x:Name="MaskWidthHeight_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                     PreviewTextInput="MaskWidthHeight_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            <TextBlock Grid.Row="9" Grid.Column="2"  Text="边缘算法平滑值：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="9" Grid.Column="3" x:Name="CannyAlpha_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                     PreviewTextInput="CannyAlpha_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+
+            <TextBlock Grid.Row="10" Grid.Column="0"  Text="边缘算法低阈值：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="10" Grid.Column="1" x:Name="CannyLowThresold_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                    PreviewTextInput="CannyLowThresold_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            <TextBlock Grid.Row="10" Grid.Column="2"  Text="边缘算法高阈值：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="10" Grid.Column="3" x:Name="CannyHighThresold_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                    PreviewTextInput="CannyHighThresold_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            
+            <TextBlock Grid.Row="11" Grid.Column="0"  Text="边缘算法轮廓最小长度：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="11" Grid.Column="1" x:Name="XldMinLength_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                    PreviewTextInput="XldMinLength_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+            <TextBlock Grid.Row="11" Grid.Column="2"  Text="加工轨迹偏移值：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="11" Grid.Column="3" x:Name="MachiningLocusOffset_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                     PreviewTextInput="MachiningLocusOffset_tbx_PreviewTextInput"  Width="80" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+        </Grid>
+        <Grid  Grid.Row="2" Background="#FFDDE3FB">
+            <Button Style="{StaticResource NormalButtonStyle}" Content="确  认" Click="Confirm_btn_Click" Width="90" Height="40" FontSize="22" Margin="115,0" HorizontalAlignment="Right"/>
+            <Button Style="{StaticResource NormalButtonStyle}" Content="取  消" Click="Cancel_btn_Click" Width="90" Height="40" FontSize="22" Margin="15,0" HorizontalAlignment="Right"/>
+        </Grid>
+    </Grid>
+</Window>

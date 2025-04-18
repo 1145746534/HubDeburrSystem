@@ -1,0 +1,223 @@
+一、系统需求
+
+要使用PC SDK，必须满足以下PC操作系统要求、开发环境要求和robotware软件要求。
+
+1，PC操作系统要求
+
+需要Windows 10或更高版本的64位版本。
+
+2，开发环境要求
+
+Visual Studio 2019或2022以及 .NET Framework 4.8是必需的。
+
+3，RobotWare软件要求
+
+为了使PC SDK应用程序能够与IRC5或OmniCore控制器通信，控制器上需要RobotWare选项616-1 PC接口（IRC5）或3119-1 RobotStudio连接（OmniCore）。
+
+二、安装
+
+PC SDK将与任何以前的主要版本并排安装，而发行版中的次要版本将更新为最新版本。
+
+1，安装说明
+
+A，浏览到http://developercenter.robotstudio.com选择PC SDK，然后选择下载。
+
+B，将下载的zip文件提取到计算机上的文件夹中。
+
+C，双击PCSDK version.exe以启动安装过程。
+
+2，早期版本的PC SDK安装
+
+PC SDK是Robot Application Builder（RAB）的一部分，其中还包括FlexPendant SDK。RAB 5.12是Robot Application Builder的最后一个版本。在5.13中，PC SDK和FlexPendant SDK均作为单独的产品提供。从5.14到5.15，RobotStudio将PC SDK和FlexPendant SDK与以前安装的PC SDK版本并排安装。PC SDK程序集安装在全局程序集缓存（GAC）中，直到5.15。
+
+3，安装了什么？
+
+以下安装在您的电脑上：
+
+A，SDK程序集和资源
+
+B，SDK可再发行文件
+
+C，机器人通信Runtime
+
+D，文档
+
+三、使用多个版本
+
+PC SDK应用程序通常针对特定的RobotWare版本。假设您正在为使用特定RobotWare版本的新客户开发PC SDK应用程序。同时，您还为使用不同RobotWare版本的机器人系统的客户维护现有的PC SDK应用程序，然后您需要在您的PC上使用两个不同的PC SDK版本。有关版本和兼容性的详细信息，请参阅版本升级和兼容性。
+
+1，PC应用程序
+
+在RobotStudio 5.60之前，PC SDK将其程序集安装在全局程序集缓存（GAC）中。5.60之前的旧PC SDK应用程序将继续按定义运行，因为GAC中提供了PC SDK版本。对于PC SDK应用程序，即5.60及更高版本，必须添加对新PC SDK程序集的引用，然后重新生成项目。
+
+使用以下步骤将PC SDK引用添加到应用程序中：
+
+A，浏览到与要添加到Microsoft Visual Studio项目中的PC SDK版本相匹配的安装目录。
+
+B，选择要添加引用的PC SDK程序集。
+
+C，将Reference属性Specific Version设置为true，以确保在运行时使用正确版本的PC SDK dll。
+
+2，RobotStudio加载项
+
+使用PC SDK的RobotStudio Addin程序无法决定在运行时使用哪个版本的PC SDK程序集。原因是Addin程序本身是加载到RobotStudio应用程序域中的程序集。由于RobotStudio内部也使用PC SDK，因此PC SDK程序集已经加载，并且插件被迫使用与RobotStudio相同的版本。例如，加载到早期版本的RobotStudio中的外接程序将被迫使用较新版本的PC SDK程序集。
+
+四、如何设置你的电脑与机器人通信
+
+您可以通过以太网将电脑连接到控制器，也可以直接连接到控制器服务端口。使用控制器服务端口时，您可以自动获取电脑的IP地址，也可以指定固定的IP地址。当电脑和控制器正确连接时，RobotStudio会自动检测到控制器。
+
+1，为什么需要连接？
+
+在RobotStudio中执行的所有在线任务都需要将PC连接到控制器。例如，将机器人系统或文件下载到控制器，编辑配置文件，编程等等。这对于执行以真实机器人控制器为目标的PC应用程序是必要的。它还使您能够通过PC上的控制台窗口与控制器通信，并获得有关控制器状态、FlexPendant内存消耗等的宝贵信息。
+
+2，以太网连接
+
+如果控制器连接到以太网，您也可以将电脑连接到该网络。要在电脑上使用的设置取决于网络配置。要了解如何设置电脑，请与网络管理员联系。
+
+3，具有自动IP地址的服务端口连接
+
+网络连接的另一种选择是使用控制器服务端口。它有一个DHCP服务器，如果为此配置，它会自动为您的电脑提供IP地址。有关将电脑配置为自动获取IP地址的详细信息。
+
+4，具有固定IP地址的服务端口连接
+
+您可以在连接到控制器的电脑上指定一个固定的IP地址，而不是自动获取IP地址。使用以下设置连接固定IP地址：
+
+
+一、简介
+
+要开始编程，请创建一个简单的应用程序，显示网络上的所有虚拟和实际控制器。然后应该可以登录到控制器并启动RAPID执行。
+
+二、设置项目
+
+使用以下步骤可以设置PC SDK项目：
+
+1，在Visual Studio的“文件”菜单上，选择“新建”，然后单击“项目”。选择一个Windows应用程序项目。
+
+2，将对PC SDK程序集ABB.Robotics.Controllers.PC.dll的引用添加到项目中。此程序集的默认位置是安装目录。
+
+3，添加所需的名称空间语句：
+
+using ABB.Robotics.Controllers.PC;
+
+using ABB.Robotics.Controllers.Discovery;
+
+using ABB.Robotics.Controllers.RapidDomain;
+
+
+
+private NetworkScanner scanner = null;
+
+private Controller controller = null;
+
+private Task[] tasks = null;
+
+private NetworkWatcher networkwatcher = null;
+
+his.scanner = new NetworkScanner();
+
+this.scanner.Scan();
+
+ControllerInfoCollection controllers = scanner.Controllers;
+
+ListViewItem item = null;
+
+foreach (ControllerInfo controllerInfo in controllers)
+
+{
+
+    item = new ListViewItem(controllerInfo.IPAddress.ToString());
+
+    item.SubItems.Add(controllerInfo.Id);
+
+    item.SubItems.Add(controllerInfo.Availability.ToString());
+
+    item.SubItems.Add(controllerInfo.IsVirtual.ToString());
+
+    item.SubItems.Add(controllerInfo.SystemName);
+
+    item.SubItems.Add(controllerInfo.Version.ToString());
+
+    item.SubItems.Add(controllerInfo.ControllerName);
+
+    this.listView1.Items.Add(item);
+
+    item.Tag = controllerInfo;
+
+}
+
+添加网络观察程序
+
+通过实现NetworkWatcher，应用程序可以监控网络并检测控制器何时丢失或添加。此示例显示如何对网络监控进行编程，以及如何将检测到的控制器添加到列表视图中。在将NetworkWatcher对象添加到FormLoad事件处理程序之后，我们将订阅添加到其Found事件。
+
+this.networkwatcher = new NetworkWatcher(scanner.Controllers);
+
+this.networkwatcher.Found += new EventHandler<NetworkWatcherEventArgs>(HandleFoundEvent);
+
+this.networkwatcher.Lost += new EventHandler<NetworkWatcherEventArgs>(HandleLostEvent);
+
+this.networkwatcher.EnableRaisingEvents = true;
+
+
+启动程序执行
+
+启动RAPID程序按钮的Click事件处理程序应启动第一个RAPID任务的程序执行。
+
+在手动模式下启动RAPID只能通过FlexPendant执行，因此在尝试之前，我们需要检查控制器是否处于自动模式。然后我们需要请求Rapid的主控权并调用Start方法。如果主控权已经由我们自己或另一个客户端持有，则会抛出InvalidOperationException。有关详细信息，请参阅Mastership。
+
+无论启动操作是否成功，都有必要释放主控权。这可以通过调用finally子句中的Release（）或Dispose（）来实现，如VB示例所示，也可以通过应用using机制来实现，正如C#示例所示。
+
+private void button1_Click(object sender, EventArgs e)
+
+{
+
+    try
+
+    {
+
+        if (controller.OperatingMode == ControllerOperatingMode.Auto)
+
+        {
+
+            tasks = controller.Rapid.GetTasks();
+
+            using (Mastership m =Mastership.Request(controller.Rapid))
+
+            {
+
+                //Perform operation
+
+                tasks[0].Start();
+
+            }
+
+        }
+
+        else
+
+        {
+
+            MessageBox.Show(
+
+                "Automatic mode is required to start execution from a remote client.");
+
+        }
+
+    }
+
+    catch (System.InvalidOperationException ex)
+
+    {
+
+        MessageBox.Show("Mastership is held by another client." + ex.Message);
+
+    }
+
+    catch (System.Exception ex)
+
+    {
+
+        MessageBox.Show("Unexpected error occurred: " + ex.Message);
+
+    }
+
+}

@@ -1,0 +1,70 @@
+﻿<Window x:Class="HubDeburrSystem.Views.Dialog._3DLocusParameterSettingsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HubDeburrSystem.Views.Dialog"
+        mc:Ignorable="d"
+        FontFamily="Microsoft YaHei" FontWeight="Medium" FontSize="14"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Title="3D轨迹制作参数设置" Height="400" Width="600">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="1"/>
+    </WindowChrome.WindowChrome>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Assets/Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Assets/Styles/TextBoxStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid  Background="#88D1D5E8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#FFDDE3FB">
+            <TextBlock Text="3D轨迹制作参数设置" VerticalAlignment="Center" Margin="20,0" FontSize="22" FontWeight="Bold" Foreground="#444"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Text="进刀点X轴偏移距离（像素）：" VerticalAlignment="Center"  FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox  Grid.Row="0"  Grid.Column="1" x:Name="EntryPointXAxisOffsetDistance_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                      PreviewTextInput="EntryPointXAxisOffsetDistance_tbx_PreviewTextInput"  Width="100" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+
+            <TextBlock Grid.Row="1"  Text="进刀点Y轴偏移距离（像素）：" VerticalAlignment="Center"  FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox  Grid.Row="1"  Grid.Column="1" x:Name="EntryPointYAxisOffsetDistance_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                      PreviewTextInput="EntryPointYAxisOffsetDistance_tbx_PreviewTextInput"  Width="100" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+
+            <TextBlock Grid.Row="2" Text="出刀点X轴偏移距离（像素）：" VerticalAlignment="Center"  FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox  Grid.Row="2"  Grid.Column="1" x:Name="ExitPointXAxisOffsetDistance_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                      PreviewTextInput="ExitPointXAxisOffsetDistance_tbx_PreviewTextInput"  Width="100" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+
+            <TextBlock Grid.Row="3"  Text="出刀点Y轴偏移距离（像素）：" VerticalAlignment="Center"  FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox  Grid.Row="3"  Grid.Column="1" x:Name="ExitPointYAxisOffsetDistance_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+                      PreviewTextInput="ExitPointYAxisOffsetDistance_tbx_PreviewTextInput"  Width="100" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+
+            <TextBlock Grid.Row="4"  Text="进出刀点偏移高度（50-100mm）：" VerticalAlignment="Center"  FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox  Grid.Row="4"  Grid.Column="1" x:Name="EntryExitPointOffsetHeight_tbx" Style="{StaticResource NewTextBoxStyle}" HorizontalContentAlignment="Center"
+                      PreviewTextInput="EntryExitPointOffsetHeight_tbx_PreviewTextInput"  Width="100" FontSize="18" HorizontalAlignment="Left" Margin="0,5"/>
+        </Grid>
+        <Grid  Grid.Row="2" Background="#FFDDE3FB">
+            <Button Style="{StaticResource NormalButtonStyle}" Content="确  认" Click="Confirm_btn_Click" Width="90" Height="40" FontSize="22" Margin="115,0" HorizontalAlignment="Right"/>
+            <Button Style="{StaticResource NormalButtonStyle}" Content="取  消" Click="Cancel_btn_Click" Width="90" Height="40" FontSize="22" Margin="15,0" HorizontalAlignment="Right"/>
+        </Grid>
+    </Grid>
+</Window>

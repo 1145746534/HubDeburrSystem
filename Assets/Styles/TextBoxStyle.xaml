@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="TextBox" x:Key="NewTextBoxStyle">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border BorderBrush="#ddd" BorderThickness="2" CornerRadius="3" MinHeight="20" Background="#DFFF" Name="bor">
+                        <Grid>
+                            <TextBlock Text="{TemplateBinding Tag}" VerticalAlignment="Center" Margin="5,0" 
+                                               FontSize="11" Foreground="#BBB" Name="mark"
+                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                               Visibility="Collapsed"/>
+                            <ScrollViewer Name="PART_ContentHost" Margin="5,0"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="bor" Property="BorderBrush" Value="#FFC599DA"/>
+                        </Trigger>
+                        <Trigger Property="IsReadOnly" Value="True">
+                            <Setter TargetName="bor" Property="Background" Value="#2222"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=Text,RelativeSource={RelativeSource Mode=Self}}" Value="">
+                            <Setter Property="Visibility" TargetName="mark" Value="Visible"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="ResultTextBoxStyle">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border BorderBrush="#ddd" BorderThickness="2" CornerRadius="3" MinHeight="26" Background="#8888" Name="bor">
+                        <Grid>
+                            <TextBlock Text="{TemplateBinding Tag}" VerticalAlignment="Center" Margin="5,0" 
+                                               FontSize="11" Foreground="#BBB" Name="mark"
+                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                               Visibility="Collapsed"/>
+                            <ScrollViewer Name="PART_ContentHost" Margin="5,0"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=Text,RelativeSource={RelativeSource Mode=Self}}" Value="">
+                            <Setter Property="Visibility" TargetName="mark" Value="Visible"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

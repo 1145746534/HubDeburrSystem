@@ -1,0 +1,11 @@
+--修改数据库列名
+ALTER TABLE TemplateDataModel RENAME COLUMN InnerCircleMaxThreshold TO InnerCircleCaliperLength;
+ 
+--修改列数据
+UPDATE TemplateDataModel SET InnerCircleCaliperLength = 60
+
+--添加列-内圆半径
+ALTER TABLE TemplateDataModel ADD COLUMN InnerCircleRadius integer;
+
+--修改列数据
+UPDATE TemplateDataModel SET InnerCircleRadius = 230

@@ -1,0 +1,608 @@
+﻿<UserControl x:Class="HubDeburrSystem.Views.Pages.EquipmentPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HubDeburrSystem.Views.Pages"
+             mc:Ignorable="d" 
+             DataContext="{Binding Source={StaticResource Locator},Path = EquipmentPageViewModelLocator}"
+             d:DesignHeight="850" d:DesignWidth="1550">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Assets/Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Assets/Styles/ComboBoxStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Assets/Styles/GroupBoxStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Assets/Styles/TextBoxStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Assets/Styles/DataGridStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="CenterAlignmentStyle" TargetType="TextBlock">
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Margin="70,10,5,5">
+        <Border CornerRadius="5"  Background="#88D1D5E8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="设备状态" Margin="5,5" Style="{StaticResource NewGroupBoxStyle}">
+                        <Grid Margin="5,25,5,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" CornerRadius="5" Height="80" Width="75" Background="{Binding PushrodCylinderBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="推杆气缸" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="1" CornerRadius="5" Height="80" Width="75" Background="{Binding FixedCenterBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="定中机构" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="2" CornerRadius="5" Height="80" Width="75" Background="{Binding DO3Background}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="打磨主轴" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="3" CornerRadius="5" Height="80" Width="75" Background="{Binding DO1Background}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="浮动锁紧" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="4" CornerRadius="5" Height="80" Width="75" Background="{Binding DO2Background}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="打磨吹扫" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="0" CornerRadius="5" Height="80" Width="75" Background="{Binding InletPhotoelectricityBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="入口光电" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="1" CornerRadius="5" Height="80" Width="75" Background="{Binding ProcessingPhotoelectricityBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="加工位光电" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="2" CornerRadius="5" Height="80" Width="75" Background="{Binding ExportPhotoelectricity1Background}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="出口光电1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="3" CornerRadius="5" Height="80" Width="75" Background="{Binding ExportPhotoelectricity2Background}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="出口光电2" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="4" CornerRadius="5" Height="80" Width="75" Background="{Binding PushrodInductionBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="推杆回位感应" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="5" CornerRadius="5" Height="80" Width="75" Background="{Binding FixedCenterInductionBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="定中回位感应" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="2" Grid.Column="0" CornerRadius="5" Height="80" Width="75" Background="{Binding InletMotorBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding InletMotorStatus}" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="入口电机" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="2" Grid.Column="1" CornerRadius="5" Height="80" Width="75" Background="{Binding ProcessingMotorBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding ProcessingMotorStatus}" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Grid.Row="1" Text="加工位电机" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="2" Grid.Column="2" CornerRadius="5" Height="80" Width="75" Background="{Binding ExportMotor1Background}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding ExportMotor1Status}" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Grid.Row="1" Text="出口电机1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="2" Grid.Column="3" CornerRadius="5" Height="80" Width="75" Background="{Binding ExportMotor2Background}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding ExportMotor2Status}" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Grid.Row="1" Text="出口电机2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Row="1" Header="设备手动" Margin="5,0,5,5" Style="{StaticResource NewGroupBoxStyle}">
+                        <Grid Margin="5,25,5,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <UniformGrid Columns="6">
+                                <Button  Content="推杆气缸推出" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding PushrodCylinderProtrudeCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button  Content="定中夹紧" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding ClampingCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button  Content="打磨主轴开" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding DO3OpenCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button  Content="浮动锁紧开" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding DO1OpenCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button  Content="打磨吹扫开" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding DO2OpenCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                            </UniformGrid>
+                            <UniformGrid Grid.Row="1" Columns="6">
+                                <Button  Content="推杆气缸缩回" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding PushrodCylinderRetractedCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button Grid.Row="1"  Content="定中松开" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding LoosenCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button  Content="打磨主轴关" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding DO3CloseCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button  Content="浮动锁紧关" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding DO1CloseCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button  Content="打磨吹扫关" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding DO2CloseCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                            </UniformGrid>
+                            <UniformGrid Grid.Row="2" Columns="6">
+                                <Button  Content="入口电机开" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding EntranceMotorOpenCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button  Content="加工位电机开" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding ProcessingMotorOpenCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button  Content="出口电机1开" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding OutletMotor1OpenCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button  Content="出口电机2开" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding OutletMotor2OpenCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                            </UniformGrid>
+                            <UniformGrid Grid.Row="3" Columns="6">
+                                <Button  Content="入口电机关" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding EntranceMotorCloseCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button  Content="加工位电机关" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                Command="{Binding ProcessingMotorCloseCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button  Content="出口电机1关" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                 Command="{Binding OutletMotor1CloseCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button  Content="出口电机2关" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                 Command="{Binding OutletMotor2CloseCommand}" IsEnabled="{Binding ManualButtonEnable}"/>
+                            </UniformGrid>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    
+                    <GroupBox Grid.Row="0" Header="PLC状态" Margin="0,5,5,5" Style="{StaticResource NewGroupBoxStyle}">
+                        <Grid Margin="5,25,5,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" CornerRadius="5" Height="80" Width="75" Background="{Binding ReturnZeroCompletionBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="回零完成" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="1" CornerRadius="5" Height="80" Width="75" Background="{Binding EnableCompletionBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="使能完成" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="2" CornerRadius="5" Height="80" Width="75" Background="{Binding EnableErrorBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="使能错误" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="3" CornerRadius="5" Height="80" Width="75" Background="{Binding }">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="使能错误" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="4" CornerRadius="5" Height="80" Width="75" Background="{Binding JoggingBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="点动运行中" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="5" CornerRadius="5" Height="80" Width="75" Background="{Binding FaultBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="故障" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="6" CornerRadius="5" Height="80" Width="75" Background="{Binding ResetCompletedBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="复位完成" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="0" CornerRadius="5" Height="80" Width="75" Background="OrangeRed">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding FaultCode}" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="故障代码" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="1" CornerRadius="5" Height="80" Width="75" Background="LightGreen">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding CurrentLocation}" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="当前位置" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="2" CornerRadius="5" Height="80" Width="75" Background="LightGreen">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding CurrentSpeed}" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="当前速度" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="3" CornerRadius="5" Height="80" Width="75" Background="LightGreen">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding LightLocationBack}" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="光源相对位置" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="4" CornerRadius="5" Height="80" Width="75" Background="LightGreen">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding JogSpeedBack}" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="点动速度反馈" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="5" CornerRadius="5" Height="80" Width="75" Background="LightGreen">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding ZeroOffsetBack}" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="零点补偿反馈" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="1" Grid.Column="7" CornerRadius="5" Height="80" Width="75" Background="LightGreen">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding AbsoluteVelocitySpeedBack}" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="绝对速度反馈" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="2" Grid.Column="0" CornerRadius="5" Height="80" Width="75" Background="{Binding UpperLimitBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="上限位" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="2" Grid.Column="1" CornerRadius="5" Height="80" Width="75" Background="{Binding LowerLimitBackground}">
+                                <Grid ClipToBounds="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="&#xe6e0;" FontFamily="{StaticResource Iconfont}" Foreground="#11FFFFFF" FontSize="50"  HorizontalAlignment="Left" Margin="-20,0,0,0"/>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="" FontSize="14" Foreground="#333" FontWeight="Bold" Margin="0,5" TextWrapping = "Wrap"/>
+                                    </StackPanel>
+                                    <TextBlock Text="下限位" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" FontSize="12" Foreground="#888"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Grid.Row="1" Header="PLC手动" Margin="0,5,5,5" Style="{StaticResource NewGroupBoxStyle}">
+                        <Grid Margin="5,25,5,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <UniformGrid Grid.Row="0" Columns="6">
+                                <TextBox Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center" PreviewTextInput="TextBox_PreviewTextInput"
+                                        Text="{Binding ReachLocation}" Width="120" FontSize="18"  Margin="0,5"></TextBox>
+                                <Button  Content="光源位置补偿" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                        Command="{Binding SetLightLocationCommand}" CommandParameter="{Binding ReachLocation}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button x:Name="PLCAction1" Content="{Binding MyBtuContent}" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                        PreviewMouseDown="PLCAction1_PreviewMouseDown" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button x:Name="PLCAction2" Content="复位伺服报警" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                        PreviewMouseLeftButtonDown="My_MouseLeftButtonDown" PreviewMouseLeftButtonUp="My_MouseLeftButtonUp" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button x:Name="PLCAction3" Content="手动一键回零" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                        PreviewMouseLeftButtonDown="My_MouseLeftButtonDown" PreviewMouseLeftButtonUp="My_MouseLeftButtonUp" IsEnabled="{Binding ManualButtonEnable}"/>
+                            </UniformGrid>
+                            <UniformGrid Grid.Row="1" Columns="6">
+                                <TextBox x:Name="Text_JogSpeed" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center" PreviewTextInput="TextBox_PreviewTextInput"
+                                        Text="{Binding JogSpeed}" Width="120" FontSize="18"  Margin="0,5"></TextBox>
+                                <Button  Content="点动速度" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                        Command="{Binding SetJogSpeedCommand}" CommandParameter="{Binding JogSpeed}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button x:Name="PLCAction4" Content="轴向上点动" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                        PreviewMouseLeftButtonDown="My_MouseLeftButtonDown" PreviewMouseLeftButtonUp="My_MouseLeftButtonUp" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button x:Name="PLCAction5" Content="轴向下点动" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                        PreviewMouseLeftButtonDown="My_MouseLeftButtonDown" PreviewMouseLeftButtonUp="My_MouseLeftButtonUp" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button x:Name="PLCAction6" Content="轴暂停" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                        PreviewMouseLeftButtonDown="My_MouseLeftButtonDown" PreviewMouseLeftButtonUp="My_MouseLeftButtonUp" IsEnabled="{Binding ManualButtonEnable}"/>
+                               
+                            </UniformGrid>
+                            <UniformGrid Grid.Row="2" Columns="6">
+                                <TextBox Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center" PreviewTextInput="TextBox_PreviewTextInput"
+                                        Text="{Binding ZeroOffset}" Width="120" FontSize="18"  Margin="0,5"></TextBox>
+                                <Button  Content="零点补偿" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                        Command="{Binding SetZeroOffsetCommand}" CommandParameter="{Binding ZeroOffset}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <TextBox Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center" PreviewTextInput="TextBox_PreviewTextInput"
+                                        Text="{Binding AbsoluteVelocity}" Width="120" FontSize="18"  Margin="0,5"></TextBox>
+                                <Button  Content="绝对运动速度" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                        Command="{Binding SetAbsoluteVelocityCommand}" CommandParameter="{Binding AbsoluteVelocity}" IsEnabled="{Binding ManualButtonEnable}"/>
+                                <Button x:Name="PLCAction7" Content="复位加工完成" FontSize="15" VerticalAlignment="Center" Style="{StaticResource NormalButtonStyle}" Height="35" Margin="5,0"
+                                        PreviewMouseLeftButtonDown="My_MouseLeftButtonDown" PreviewMouseLeftButtonUp="My_MouseLeftButtonUp" IsEnabled="{Binding ManualButtonEnable}"/>
+                            </UniformGrid>
+                            <UniformGrid Grid.Row="2" Columns="6">
+
+                            </UniformGrid>
+                        </Grid>
+                        
+                    </GroupBox>
+                </Grid>
+                
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

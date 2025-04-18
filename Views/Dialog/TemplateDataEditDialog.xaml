@@ -1,0 +1,81 @@
+﻿<Window x:Class="HubDeburrSystem.Views.Dialog.TemplateDataEditDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HubDeburrSystem.Views.Dialog"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Title="模板数据编辑" Height="314" Width="600">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="1"/>
+    </WindowChrome.WindowChrome>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Assets/Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Assets/Styles/TextBoxStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="#88D1D5E8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#FFDDE3FB">
+            <TextBlock Text="模板数据修改" VerticalAlignment="Center" Margin="20,0" FontSize="22" FontWeight="Bold" Foreground="#444"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.8*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0"  Text="序号：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox  Grid.Row="0"  Grid.Column="1" x:Name="Index_tbx" Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+            Width="120" FontSize="18" HorizontalAlignment="Left" Margin="0,2" IsReadOnly="True"/>
+            <TextBlock Grid.Row="1" Text="轮毂型号：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="WheelType_tbx" PreviewTextInput="WheelType_tbx_PreviewTextInput"  Style="{StaticResource NewTextBoxStyle}"  HorizontalContentAlignment="Center"
+            Width="120" FontSize="18" HorizontalAlignment="Left" Margin="0,2" IsReadOnly="True"/>
+            <TextBlock Grid.Row="2" Text="轮辐个数：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="SpokeQuantity_tbx" PreviewTextInput="SpokeQuantity_tbx_PreviewTextInput" Style="{StaticResource NewTextBoxStyle}" HorizontalContentAlignment="Center"
+            Width="120" FontSize="18" HorizontalAlignment="Left" Margin="0,2"/>
+            <TextBlock Grid.Row="3" Text="轨迹缩放：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="3" Grid.Column="1" x:Name="LocusScale_tbx" PreviewTextInput="LocusScale_tbx_PreviewTextInput" Style="{StaticResource NewTextBoxStyle}" HorizontalContentAlignment="Center"
+            Width="120" FontSize="18" HorizontalAlignment="Left" Margin="0,2"/>
+
+            <TextBlock Grid.Row="0" Grid.Column="2" Text="暗部最大阈值：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="0" Grid.Column="3" x:Name="DarkMaxThreshold_tbx" PreviewTextInput="DarkMaxThreshold_tbx_PreviewTextInput" Style="{StaticResource NewTextBoxStyle}" HorizontalContentAlignment="Center"
+            Width="120" FontSize="18" HorizontalAlignment="Left" Margin="0,2"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="亮部最小阈值：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="1" Grid.Column="3" x:Name="LightMinThreshold_tbx" PreviewTextInput="LightMinThreshold_tbx_PreviewTextInput" Style="{StaticResource NewTextBoxStyle}" HorizontalContentAlignment="Center"
+            Width="120" FontSize="18" HorizontalAlignment="Left" Margin="0,2"/>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="内圆卡尺长度：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="2" Grid.Column="3" x:Name="InnerCircleCaliperLength_tbx" PreviewTextInput="InnerCircleMaxThreshold_tbx_PreviewTextInput" Style="{StaticResource NewTextBoxStyle}" HorizontalContentAlignment="Center"
+            Width="120" FontSize="18" HorizontalAlignment="Left" Margin="0,2"/>
+            <TextBlock Grid.Row="3" Grid.Column="2" Text="内圆半径：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="3" Grid.Column="3" x:Name="InnerCircleRadius_tbx" PreviewTextInput="InnerCircleMaxThreshold_tbx_PreviewTextInput" Style="{StaticResource NewTextBoxStyle}" HorizontalContentAlignment="Center"
+            Width="120" FontSize="18" HorizontalAlignment="Left" Margin="0,2" IsReadOnly="False"/>
+            <TextBlock Grid.Row="4" Grid.Column="2" Text="角度补偿：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="4" Grid.Column="3" x:Name="AngularCompensation_tbx" PreviewTextInput="AngularCompensation_tbx_PreviewTextInput" Style="{StaticResource NewTextBoxStyle}" HorizontalContentAlignment="Center"
+            Width="120" FontSize="18" HorizontalAlignment="Left" Margin="0,2"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="加工压力：" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="4" Grid.Column="1" x:Name="ProcessingPressure_tbx" PreviewTextInput="AngularCompensation_tbx_PreviewTextInput" Style="{StaticResource NewTextBoxStyle}" HorizontalContentAlignment="Center"
+            Width="120" FontSize="18" HorizontalAlignment="Left" Margin="0,2"/>
+        </Grid>
+        <Grid  Grid.Row="2" Background="#FFDDE3FB">
+            <Button Style="{StaticResource NormalButtonStyle}" Content="确  认" Click="Confirm_btn_Click" Width="90" Height="40" FontSize="22" Margin="115,0" HorizontalAlignment="Right"/>
+            <Button Style="{StaticResource NormalButtonStyle}" Content="取  消" Click="Cancel_btn_Click" Width="90" Height="40" FontSize="22" Margin="15,0" HorizontalAlignment="Right"/>
+        </Grid>
+    </Grid>
+</Window>
